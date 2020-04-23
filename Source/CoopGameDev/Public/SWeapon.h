@@ -8,6 +8,9 @@
 
 
 class USkeletalMeshComponent;
+class UDamageType;
+class UParticleSystem;
+
 UCLASS()
 class COOPGAMEDEV_API ASWeapon : public AActor
 {
@@ -26,6 +29,24 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void Fire();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	TSubclassOf<UDamageType> DamageType;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* MuzzleEffect;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	FName MuzzleSocketName;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	FName TracerTargetName;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* ImpactEffect;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UParticleSystem* TracerEffect;
 
 public:	
 	// Called every frame
